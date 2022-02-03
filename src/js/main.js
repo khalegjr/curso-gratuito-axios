@@ -89,7 +89,16 @@ const transform = () => {
 };
 
 const errorHandling = () => {
-  console.log("errorHandling");
+  axios
+    .get("https://jsonplaceholder.typicode.com/postz")
+    .then((response) => renderOutput(response))
+    .catch((error) => {
+      renderOutput(error.response);
+      console.log(error.response.data);
+      console.log(error.response.status);
+      console.log(error.response.headers);
+      console.log(error.message);
+    });
 };
 
 const cancel = () => {
