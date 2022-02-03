@@ -3,15 +3,16 @@ const dataEl = document.getElementById("data");
 const headersEl = document.getElementById("headers");
 const configEl = document.getElementById("config");
 
+const config = {
+  params: {
+    _limit: 5,
+  },
+};
+
 const get = () => {
   axios
-    .get("https://jsonplaceholder.typicode.com/posts", {
-      params: {
-        _limit: 5,
-      },
-    })
+    .get("https://jsonplaceholder.typicode.com/posts", config)
     .then((response) => renderOutput(response));
-  console.log("get");
 };
 
 const post = () => {
