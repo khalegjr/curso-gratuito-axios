@@ -67,7 +67,25 @@ const multiple = () => {
 };
 
 const transform = () => {
-  console.log("transform");
+  config2 = {
+    params: {
+      _limit: 5,
+    },
+    transformResponse: [
+      function (data) {
+        const payload = JSON.parse(data).map((o) => {
+          return {
+            ...o,
+            is_selected: false,
+          };
+        });
+        return payload;
+      },
+    ],
+  };
+  axios
+    .get("https://jsonplaceholder.typicode.com/posts", config2)
+    .then((response) => renderOutput(response));
 };
 
 const errorHandling = () => {
