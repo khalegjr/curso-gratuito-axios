@@ -56,7 +56,14 @@ const del = () => {
 };
 
 const multiple = () => {
-  console.log("multiple");
+  Promise.all([
+    axios.get("https://jsonplaceholder.typicode.com/posts", config),
+    axios.get("https://jsonplaceholder.typicode.com/users"),
+  ]).then((response) => {
+    renderOutput(response[0]);
+    console.table(response[0].data);
+    console.table(response[1].data);
+  });
 };
 
 const transform = () => {
