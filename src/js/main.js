@@ -27,7 +27,16 @@ const post = () => {
 };
 
 const put = () => {
-  console.log("put");
+  const data = {
+    id: 1,
+    title: "LaraVue",
+    body: "Alterando dados com PUT",
+    userId: 1,
+  };
+
+  axios
+    .put("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => renderOutput(response));
 };
 
 const patch = () => {
