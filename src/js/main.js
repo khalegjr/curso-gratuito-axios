@@ -40,7 +40,13 @@ const put = () => {
 };
 
 const patch = () => {
-  console.log("patch");
+  const data = {
+    title: "Alterando dados com Patch",
+  };
+
+  axios
+    .patch("https://jsonplaceholder.typicode.com/posts/1", data)
+    .then((response) => renderOutput(response));
 };
 
 const del = () => {
