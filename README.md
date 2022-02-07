@@ -9,3 +9,5 @@ Arquivos do curso gratuito Axios
 [Link para o Prismjs](https://prismjs.com/)
 
 [Link para o JsonPlaceholder](https://jsonplaceholder.typicode.com/guide/)
+
+[Link para o The Star Wars API](https://swapi.dev/)
