@@ -4,7 +4,7 @@ const headersEl = document.getElementById("headers");
 const configEl = document.getElementById("config");
 
 axios.defaults.baseURL = "https://jsonplaceholder.typicode.com";
-axios.defaults.headers.common["Um-Campo-Padrao"] = "conteúdo";
+// axios.defaults.headers.common["Um-Campo-Padrao"] = "conteúdo";
 
 axios.interceptors.request.use(
   function (config) {
@@ -31,7 +31,7 @@ axios.interceptors.response.use(
     return response;
   },
   function (error) {
-    console.log("response falhou", error);
+    console.log("response falhou", error.message);
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     return Promise.reject(error);
@@ -44,8 +44,13 @@ const config = {
   },
 };
 
+const newAxios = axios.create({
+  baseURL: "https://swapi.dev/api/",
+});
+newAxios.defaults.headers.common["Authorization"] = "new axios";
+
 const get = () => {
-  axios.get("posts", config).then((response) => renderOutput(response));
+  newAxios.get("people/1").then((response) => renderOutput(response));
 };
 
 const post = () => {
